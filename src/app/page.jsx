@@ -2,20 +2,20 @@
 import Card from "@/components/Card";
 import axios from "axios";
 import Image from "next/image";
-import {data} from "./api/movies/route"
 import { useEffect, useState } from "react";
 export default function Home() {
   const [movie,setMovie] = useState([])
-  // console.log("process",process.env)
+  console.log("process",process.env.NODE_ENV==="development"?"dev":"production")
+  let baseUrl = (process.env.NODE_ENV ==="development"?'http://localhost:3000/api':'https://my-app-ten-xi-55.vercel.app/api')
+  
   async function fetchApi (){
-    let res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/movies`)
+    let res = await axios.get(`${baseUrl}/movies`)
     setMovie(res.data)
     // console.log(res.data)
   }
   useEffect(()=>{
     fetchApi()
   },[])
-  console.log(data)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>hello Next js</h1>
