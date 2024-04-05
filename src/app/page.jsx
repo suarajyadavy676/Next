@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [movie,setMovie] = useState([])
   console.log("process",process.env.NODE_ENV==="development"?"dev":"production")
-  let baseUrl = (process.env.NODE_ENV ==="development"?'http://localhost:3000/api':'https://my-app-ten-xi-55.vercel.app/api')
+  let baseUrl = (process.env.NODE_ENV ==="development"?'http://localhost:3000/api':'https://next-xi-kohl.vercel.app/api')
   
   async function fetchApi (){
     let res = await axios.get(`${baseUrl}/movies`)
